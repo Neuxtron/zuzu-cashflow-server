@@ -18,7 +18,12 @@ model Records {
   id        String   @id @default(uuid())
   title     String
   amount    Int
-  type      String
+  type      TransactionType
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
+}
+
+enum TransactionType {
+  expense
+  income
 }
