@@ -5,14 +5,12 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider     = "prisma-client"
-  output       = "../src/generated/prisma"
+  provider     = "prisma-client-js"
   moduleFormat = "cjs"
 }
 
 datasource db {
-  provider = "mysql"
-  // url      = env("DATABASE_URL")
+  provider = "postgresql"
 }
 
 model Records {
@@ -22,6 +20,8 @@ model Records {
   type      TransactionType
   createdAt DateTime        @default(now()) @map("created_at")
   updatedAt DateTime        @updatedAt @map("updated_at")
+
+  @@map("records")
 }
 
 enum TransactionType {
